@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<stdlib.h>
+void pointersDemo();
+void realationshipBetweenArrayAndPointer();
+void callByValueDemo(int,int);
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("\nEnter the your choice:\n");
+        printf("1.pointersDemo\n2.realationshipBetweenArrayAndPointer\n3.callByValueDemo\n4.exit\n");
+        scanf("%d",&choice);
+        getchar();
+        switch(choice)
+        {
+        case 1:pointersDemo();break;
+        case 2:realationshipBetweenArrayAndPointer();break;
+        case 3:callByValueDemo(5,6);break;
+        case 4:exit(1);break;
+        default:printf("Enter the valid number [1 to 10]\n");
+        }
+    }
+    return 0;
+}
+void pointersDemo()
+{
+    float f=3.5;
+    float *ptrf;
+    ptrf=&f;
+    printf("Address of using pointer:%u\n",ptrf);
+    printf("Value inside using pointer:%f\n",*ptrf);
+
+    printf("Address of using pointer variable *ptr:%u\n",&ptrf);
+}
+void realationshipBetweenArrayAndPointer()
+{
+    int a[4]={1,2,3,4},i;
+    printf("Address inside a:%u\n",a);
+    printf("Address of array a's first element:%u\n",&a[0]);
+    printf("******Accessing array elements using pointers******\n");
+    for(i=0;i<4;i++)
+    printf("%u-%d\n",(a+i),*(a+i));
+}
+void callByValueDemo(int x,int y)
+{
+    x++,y++;
+    printf("Sum:%d\n",(x+y));
+}
