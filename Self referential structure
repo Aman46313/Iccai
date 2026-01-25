@@ -1,0 +1,40 @@
+#include<stdio.h>
+void selfReferentialStructure();
+int main()
+{
+    selfReferentialStructure();
+    return 0;
+
+}
+void selfReferentialStructure()
+{
+   int i,n;
+   struct person
+   {
+       char name[30];
+       int age;
+       int regNo;
+       struct person*next;
+   } ;
+   printf("Enter the how many person data you need to store:");
+   scanf("%d",&n);
+   struct person p[n];
+   printf("*****person details*******\n");
+   for(i=0;i<n;i++)
+   {
+       printf("Enter the %d person name:",i+1);
+       scanf("%s",&p[i].name);
+       printf("Enter the %d person age:",i+1);
+       scanf("%d",&p[i].age);
+       printf("Enter the %d person register number:",i+1);
+       scanf("%d",&p[i].regNo);
+   }
+   for(i=0;i<n;i++)
+   {
+       printf("***********\n");
+       printf("*********%d person details**********\n",i+1);
+       printf("Person name:%s\nPerson age:%d\nPerson register number:%d\n",p[i].name,p[i].age,p[i].regNo);
+       p[i].next-&p[i+1];
+       printf("Address of next person %d\n",p[i]);
+   }
+}
