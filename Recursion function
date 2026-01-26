@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include"A.h"
+int b;
+
+int main()
+{
+    int e,b;
+    printf("Enter you choice\n1 for call by value\n2 call by refrence\n3 for recursion function\n4 for bubble sort\n5 for exit\n");
+    scanf("%d",&e);
+    int c=1,d=20,temp;
+    switch(e)
+    {
+        case 1:
+        printf("value before increment A:%d\nB:%d\n",c,d);
+        break;
+        case 2:refrence(&c,&d);
+        printf("\nvalue after swapping\nA:%d \nB:%d\nsum of A and B:%d",c,d,c+d);
+        break;
+        case 3:
+            printf("enter the range you need to print the even numbers\n");
+            scanf("%d",&b);
+            recursion(c,b);break;
+        case 4:exit(1);break;
+        default:printf("enter the proper choice");
+    }
+}
+
+
+
+int recursion(int a,int z)
+{
+    if(a>=z)
+        return;
+    else
+    {
+        if(a%2==0)
+        {
+            printf("%d\n",a);
+            a++;
+            recursion(a,z);
+        }
+        else{
+                a++;
+            recursion(a,z);
+        }
+    }
+}
