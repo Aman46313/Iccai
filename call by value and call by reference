@@ -1,0 +1,30 @@
+#include<stdio.h>
+void CubeByValue(int);
+void Cubebyreference(int*);
+int main()
+{
+    int a,b;
+    printf("***************call by value*******************\n");
+    printf("Enter the value for a:");
+    scanf("%d",&a);
+    printf("before cube by value:%d\n:",a);
+    CubeByValue(a);
+    printf("After cube by value:%d\n\n",a);
+    printf("************call by reference*******************\n");
+    printf("Enter the value for b:");
+    scanf("%d",&b);
+    printf("before cube by reference:%d\n",b);
+    Cubebyreference(&b);
+    printf("after cube by reference:%d\n",b);
+
+}
+void CubeByValue(int a)
+{      a = a * a * a;
+       printf("inside cube by a value:%d\n", a);
+}
+void Cubebyreference(int *j)
+{
+    *j=(*j)*(*j)*(*j);
+    printf("inside cube by a value:%d\n",*j);
+
+}
