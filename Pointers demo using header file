@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"pointerss.h"
+
+int main()
+{
+    int a=5,b=10;
+    int choice;
+    while(1)
+    {
+        printf("Enter the choice:\n");
+        printf("1.Appendig\n2.Swapping\n3.Call by value\n4.Call by reference\n5.exit\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:printf("*******Appending*****\n");appending();break;
+            case 2:printf("*******Swaping*****\n");
+                   printf("Before swaping a=%d\tb=%d\n",a,b);
+                   swaping(&a,&b);
+                   printf("After swaping a=%d\tb=%d\n",a,b);break;
+            case 3:printf("*******Call by value*****\n");
+                   printf("Before call by value a=%d\tb=%d\n",a,b);
+                   callByValue(a,b);
+                   printf("After call by value a=%d\tb=%d\n",a,b);break;
+            case 4:printf("*******Call by reference*****\n");
+                   printf("Before call by value a=%d\tb=%d\n",a,b);
+                   callByReference(&a,&b);
+                   printf("After call by value a=%d\tb=%d\n",a,b);break;
+            case 5:exit(1);break;
+            default:printf("Enter the correct value [1 to 5]\n");
+        }
+    }
+    return 0;
+}
+void appending();
+void swaping(int *,int*) ;
+void callByValue(int,int);
+void callByReference(int *,int *);
+
+
+
+void appending()
+{
+    int n,i,a[30],ele;
+    printf("Enter the how many element you want to process:");
+    scanf("%d",&n);
+    printf("Enter the %d numebers\n",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("Enter the appending number:");
+    scanf("%d",&ele);
+    *(a+n)=ele;
+    n++;
+    printf("Array element appending\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",*(a+i));
+    }
+}
+void swaping(int*a,int*b)
+{
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+}
+void callByValue(int a,int b)
+{
+    a++;b++;
+    printf("Sum=%d\n",(a+b));
+}
+void callByReference(int*a,int*b)
+{
+    *a=*a+2;
+    *b=*b-1;
+    printf("Sum=%d\n",(*a+*b));
+}
+
