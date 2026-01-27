@@ -1,0 +1,127 @@
+#include<stdio.h>
+#include<stdlib.h>
+void creatanarray();
+void accesanarray();
+void insertanarray();
+void appendanarray();
+void searchanarray();
+void deletionanarray();
+void sortinganarray();
+int a[10],n,i;
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("1.array creation\n2.array insertion\n3.array appending\n4.array searching\n5.array deletion\n6. array sorting \n7.exit\n");
+        printf("Enter the choice BETWEEN 1TO 6:\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:creatanarray();break;
+            case 2:insertanarray();break;
+            case 3:appendanarray();break;
+            case 4:searchanarray();break;
+            case 5:deletionanarray();break;
+            case 6:sortinganarray();break;
+            case 7:exit(1);
+            default:printf("Enter the choice between 1 to 6\n");
+        }
+    }
+    return 0;
+}
+void creatanarray()
+{
+    int i;
+    printf("enter how many numbers you want:");
+    scanf("%d",&n);
+    printf("Enter %d elements",n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",(a+i));
+    }
+    printf("array elements\n");
+    accesanarray();
+}
+void accesanarray()
+{
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",*(a+i));
+    }
+}
+void insertanarray()
+{
+    int position,insertelement;
+    printf("enter the insert element and position:");
+    scanf("%d%d",&insertelement,&position);
+    for(i=n;i>=position;i--)
+    {
+        a[i]=a[i-1];
+    }
+    a[position-1]=insertelement;
+    n++;
+    printf("after array insert\n");
+    accesanarray();
+}
+void appendanarray()
+{
+    int elementappend;
+    printf("enter the element to append:");
+    scanf("%d",&elementappend);
+    a[n]=elementappend;
+    n++;
+    printf("after array append\n");
+    accesanarray();
+}
+void searchanarray()
+{
+    int searchelement=0,equal;
+    printf("Enter the element to search");
+    scanf("%d",&searchelement);
+    for(i=0;i<n;i++)
+    {
+        if(searchelement==(a+i))
+        {
+            equal=1;
+        }
+    }
+    if(equal=1)
+    {
+        printf("search is succesful\n");
+    }
+    else
+    {
+        printf("element is not found");
+    }
+}
+void deletionanarray()
+{
+    int position,deletelement;
+    printf("enter the  position:");
+    scanf("%d",&position);
+    for(i=position-1;i<=n;i++)
+    {
+        a[i]=a[i+1];
+    }
+    n--;
+    printf("after array deletion\n");
+    accesanarray();
+}
+void sortinganarray()
+{
+    int tmp,j;
+    for(i=0;i<n-1;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                tmp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=tmp;
+            }
+        }
+    }
+    accesanarray();
+}
