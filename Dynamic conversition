@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<stdlib.h>
+void selfreferentialStructure();
+void allocationMemoryAFloatVariable();
+
+int main()
+{
+   selfreferentialStructure();
+   printf("****Allocation memory*****\n");
+   allocationMemoryAFloatVariable();
+   return 0;
+}
+void selfreferentialStructure()
+{
+    struct Node
+    {
+        int data;
+        struct Node*ptr;
+    };
+    struct Node num1,num2,num3;
+    num1.data=10;
+    num1.ptr=&num2;
+
+    num2.data=20;
+    num2.ptr=&num3;
+
+    num3.data=30;
+    num3.ptr=0;
+
+    printf("num2 data:%d\n",num1.ptr->data);
+    printf("num3 data:%d\n\n",num2.ptr->data);
+}
+
+void allocationMemoryAFloatVariable()
+{
+    float *ptrf;
+    ptrf=(float*)malloc(4);
+    if(ptrf==0)
+    {
+        printf("Memory is not allocated\n");
+        return;
+    }
+    else
+    {
+        printf("Enter the float value:");
+        scanf("%f",ptrf);
+       printf("\nEntered the float value:%f\nit's address:%u\n",*ptrf,ptrf);
+    }
+}
+
