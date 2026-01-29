@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<stdlib.h>
+void allocationMemoryAIntegerVariable();
+int main()
+{
+   allocationMemoryAIntegerVariable();
+   return 0;
+}
+void allocationMemoryAIntegerVariable()
+{
+    int *ptri;
+    int noElement,i;
+    printf("Enter the element you want process:");
+    scanf("%d",&noElement);
+    ptri=(int*)malloc(noElement*sizeof(int));
+    if(ptri==0)
+    {
+        printf("Memory is not allocated\n");
+        return;
+    }
+    else
+    {
+        printf("Enter the %d elements to array\n",noElement);
+        for(i=0;i<noElement;i++)
+        {
+            scanf("%d",ptri+i);
+        }
+        printf("Entered the array elements\n");
+        for(i=0;i<noElement;i++)
+        {
+            printf("%d\n",*(ptri+i));
+        }
+    }
+}
+
