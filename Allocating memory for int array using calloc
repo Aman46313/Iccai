@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<stdlib.h>
+void allocatingMemoryforArrayOfCalloc();
+int main()
+{
+    allocatingMemoryforArrayOfCalloc();
+    return 0;
+}
+void allocatingMemoryforArrayOfCalloc()
+{
+    int *ptri;
+    int i,n;
+    printf("Enter how many array elements you want:");
+    scanf("%d",&n);
+    ptri=(int *)calloc(n,sizeof(int));
+    if(ptri==0)
+    {
+        printf("memory is not allocated\n");
+    }
+    else
+    {
+        printf("Enter %d elements to array\n",n);
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",(ptri+i));
+        }
+        printf("Entered array elements\n");
+        for(i=0;i<n;i++)
+        {
+            printf("%d\n",*(ptri+i));
+        }
+
+    }
+}
