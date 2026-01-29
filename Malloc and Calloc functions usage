@@ -1,0 +1,32 @@
+void Mallocation()
+{
+    int *P,a,*P1,i=0;
+    printf("Enter how many numbers u need to enter in an array\n");
+    scanf("%d",&a);
+    P=(int *) malloc(1*sizeof(int));
+    P1=(int*) malloc(a*sizeof(int));
+    printf("enter %d number\n",a);
+    for(i=0;i<a;i++)
+        scanf("%d",(P1+i));
+    printf("entered Elements\n");
+    for(i=0;i<a;i++)
+        printf("%d\n",*(P1+i));
+    printf("Enter the value\n");
+    scanf("%d",P);
+    printf("%d is the entered value and it's address %u\n",*P,P);
+}
+void Callocation()
+{
+    int *P,a,*P1,i=0;
+    printf("Enter how many numbers u need to enter in an array\n");
+    scanf("%d",&a);
+    P=(int *) calloc(1,sizeof(int));
+    P1=(int*) calloc(a,sizeof(int));
+    printf("enter %d number\n",a);
+    for(i=0;i<a;i++)
+        scanf("%d",(P1+i));
+    printf("entered Elements\n");
+    for(i=0;i<a;i++)
+        printf("%d\n",*(P1+i));
+    printf("%d is the single variale value and it's address %u\n",*P,P);
+}
