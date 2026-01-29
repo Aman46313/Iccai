@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+void allocatingMemoryAintVariable();
+int main()
+{
+    allocatingMemoryAintVariable();
+    return 0;
+}
+void allocatingMemoryAintVariable()
+{
+    int *ptri;
+    ptri=(int *)malloc(1 * sizeof(int));
+    if(ptri == 0)
+    {
+        printf("Memory not allocated\n");
+        return;
+    }
+    else
+    {
+        printf("Enter the integer value:");
+        scanf("%d",ptri);
+        printf("Entered int value:%d and it's address:%u\n",*ptri,ptri);
+    }
+}
