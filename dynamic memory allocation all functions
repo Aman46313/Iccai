@@ -1,0 +1,157 @@
+void rellocArrayShink();
+int main()
+{
+     mallocDemo();
+     callocDemo();
+     mallocArrayDemo();
+     callocArrayDemo();
+     rellocArrayExpand();
+      rellocArrayShink();
+}
+void mallocDemo()
+{
+    int *ptrin,n,i;
+    ptrin=(int*)malloc(1*sizeof(int));
+    if(ptrin==0)
+    {
+        printf("memory is not allocate");
+    }
+    else
+    {
+        printf("enter the number:\n");
+        scanf("%d",ptrin);
+        printf("value using malloc:%d\taddress:%d\n",*ptrin,ptrin);
+    }
+
+}
+void callocDemo()
+{
+    int *ptrin,n,i;
+    ptrin=(int*)calloc(1,sizeof(int));
+    if(ptrin==0)
+    {
+        printf("memory is not allocate");
+    }
+    else
+    {
+        printf("enter the number:\n");
+        scanf("%d",ptrin);
+        printf("value using calloc:%d\taddress:%d\n",*ptrin,ptrin);
+    }
+
+}
+void mallocArrayDemoExpand()
+{
+    int *ptrin,n,i;
+    printf("How many numbers you need to process:");
+    scanf("%d",&n);
+    ptrin=(int*)malloc(n*sizeof(int));
+    if(ptrin==0)
+    {
+        printf("memory is not allocate");
+    }
+    else
+    {
+
+        for(i=0;i<n;i++)
+        {
+
+              scanf("%d",ptrin+i);
+
+        }
+
+      printf("entered  array numbers using malloc:\n");
+        for(i=0;i<n;i++)
+        {
+           printf("%d\n",*ptrin+i);
+        }
+
+
+    }
+}
+void callocArrayDemo()
+{
+    int *ptrin,n,i;
+    printf("How many numbers you need to process:");
+    scanf("%d",&n);
+    ptrin=(int*)calloc(n,sizeof(int));
+    if(ptrin==0)
+    {
+        printf("memory is not allocate");
+    }
+    else
+    {
+        printf("enter the %d number:\n",n);
+        for(i=0;i<n;i++)
+        {
+
+              scanf("%d",ptrin+i);
+
+        }
+       printf("entered  array numbers using calloc:\n");
+        for(i=0;i<n;i++)
+        {
+           printf("%d\n",*ptrin+i);
+        }
+
+
+    }
+}
+void rellocArrayExpand()
+{
+    int *ptri,i,n,size1,size2;
+    printf("How many numbers you need to process:");
+    scanf("%d",&size1);
+    ptri=(int*)calloc(size1,sizeof(int));
+    for(i=0;i<size1;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("entered array elements:\n");
+    for(i=0;i<size1;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+    printf("enter the new elements for array:");
+    scanf("%d",&size2);
+    ptri=(int*)realloc(ptri,(size1+size2)*sizeof(int));
+     for(i=size1;i<size1+size2;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("entered array elements:\n");
+    for(i=0;i<size1+size2;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+
+}
+void  rellocArrayShink()
+{
+    int *ptri,i,size1,size2;
+    printf("How many numbers you need to process:");
+    scanf("%d",&size1);
+    ptri=(int*)calloc(size1,sizeof(int));
+    printf("Enter the %d numbers:\n",size1);
+    for(i=0;i<size1;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("Entered array numbers:\n");
+    for(i=0;i<size1;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+   printf("enter the numbers to shink:");
+   scanf("%d",&size2);
+   ptri=(int*)realloc(ptri,size2*sizeof(int));
+   printf("Enter the %d numbers to shink:\n",size2);
+   printf("shink array numbers :\n");
+    for(i=0;i<size2;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+
+
+
+}
