@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+void expandingReAallocDemo();
+void shrinkingReAllocDemo();
+int main()
+{
+    expandingReAallocDemo();
+    shrinkingReAllocDemo();
+    return 0;
+}
+void expandingReAallocDemo()
+{
+    int *ptri,size1,size2,j;
+    printf("*****Expanding Memory allocation in realloc*****\n");
+    printf("Enter the number of element you want :");
+    scanf("%d",&size1);
+    ptri=(int *)calloc(size1,sizeof(int));
+    printf("Enter the %d elements\n",size1);
+    for(j=0;j<size1;j++)
+    {
+        scanf("%d",ptri+j);
+    }
+    printf("Enter the extra element:");
+    scanf("%d",&size2);
+    ptri=(int *)realloc(ptri,(size1+size2)*4);
+    printf("Enter the %d elements\n",size2);
+    for(j=size1;j<size1+size2;j++)
+    {
+        scanf("%d",ptri+j);
+    }
+    printf("Entered the array elements\n");
+    for(j=0;j<size1+size2;j++)
+    {
+        printf("%d\n",*(ptri+j));
+    }
+}
+void shrinkingReAllocDemo()
+{
+    int *ptri,size1,size2,i;
+    printf("*****Shrinking Memory allocation in realloc*****\n");
+    printf("Enter the number of element you want:");
+    scanf("%d",&size1);
+    ptri=(int *)calloc(size1,sizeof(int));
+    printf("Enter the %d elements\n",size1);
+    for(i=0;i<size1;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("Enter the how to less value\n");
+    scanf("%d",&size2);
+    ptri=(int *)realloc(ptri,(ptri,size2)*sizeof(int));
+    printf("Entered array elements\n");
+    for(i=0;i<size2;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+}
