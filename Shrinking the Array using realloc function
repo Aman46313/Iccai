@@ -1,0 +1,22 @@
+void memory1()
+{
+    int *p,size1 ,c,i;
+    printf("Enter the number of elements :\n");
+    scanf("%d",&size1);
+    p = (int*)calloc(size1,sizeof(int));
+    printf("Enter the %d elements\n",size1);
+    for(i=0;i<size1;i++)
+        scanf("%d",p+i);
+    printf("Entered elements are:\n");
+    for(i=0;i<size1;i++)
+        printf("%d\n",*(p+i));
+        printf("Enter the size to shrink the data\n");
+        scanf("%d",&c);
+        p = (int*) realloc(p,size1+c * sizeof(int));
+        printf("The elements after shrinking are:\n");
+        for(i=0;i<size1-c;i++)
+            printf("%d\n",*(p+i));
+
+        free(p);
+
+}
