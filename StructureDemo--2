@@ -1,0 +1,268 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"structure.h"
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("Enter the choice:\n");
+        printf("1.mallocDemo\n2.callocDemo\n3.ExpandingReAlloc\n4.shrinkingReAllocDemo\n5.callByValueDemo\n");
+        printf("6.callByReferenceDemo\n7.swaping\n8.exit\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:mallocDemo();break;
+            case 2:callocDemo();break;
+            case 3:ExpandingReAlloc();break;
+            case 4:shrinkingReAllocDemo();break;
+            case 5: printf("Before call by value a:%d\tb:%d\n",a,b);
+                    callByValueDemo(a,b);
+                    printf("After call by value a:%d\tb:%d\n",a,b);break;
+            case 6:printf("Before call by reference value a:%d\tb:%d\n",a,b);
+                   callByReferenceDemo(&a,&b);
+                   printf("After call by reference value a:%d\tb:%d\n",a,b);break;
+            case 7:printf("Before call by reference value a:%d\tb:%d\n",a,b);
+                   swaping(&a,&b);
+                   printf("After call by reference value a:%d\tb:%d\n",a,b);break;
+            case 8:exit(1);break;
+            default:printf("Enter the correct choice [1 to 8]\n");
+        }
+    }
+    return 0;
+}
+void mallocDemo();
+void callocDemo();
+void ExpandingReAlloc();
+void shrinkingReAllocDemo();
+int a=5,b=10;
+void callByValueDemo(int,int);
+void callByReferenceDemo(int*,int*);
+void swaping(int *,int *);
+
+
+void mallocDemo()
+{
+    int *ptri;
+    ptri=(int *)malloc(1*sizeof(int));
+    if(ptri==0)
+    {
+        printf("Memory is not allocated\n");
+        return ;
+    }
+    else
+    {
+        printf("Enter the value:");
+        scanf("%d",ptri);
+        printf("Entered the value variable:%d\n",*ptri);
+        printf("Entered the address of a value:%u\n",ptri);
+    }
+}
+void callocDemo()
+{
+    int *ptri;
+    ptri=(int *)calloc(1,sizeof(int));
+    if(ptri==0)
+    {
+        printf("Memory is not allocated\n");
+        return ;
+    }
+    else
+    {
+        printf("Enter the value:");
+        scanf("%d",ptri);
+        printf("Entered the value variable:%d\n",*ptri);
+        printf("Entered the address of a value:%u\n",ptri);
+    }
+}
+void ExpandingReAlloc()
+{
+    int *ptri,size1,size2,i;
+    printf("Enter the no element you want:");
+    scanf("%d",&size1);
+    printf("Enter the %d elements\n",size1);
+    ptri=(int *)calloc(size1,sizeof(int));
+    for(i=0;i<size1;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("Enter the extra value:");
+    scanf("%d",&size2);
+    ptri=(int *)realloc(ptri,(size1+size2)*sizeof(int));
+    printf("Enter the %d elements\n",size2);
+    for(i=size1;i<size1+size2;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("Entered the array elements\n");
+    for(i=0;i<size1+size2;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+}
+void shrinkingReAllocDemo()
+{
+    int *ptri,size1,size2,i;
+    printf("Enter the no element you want:");
+    scanf("%d",&size1);
+    printf("Enter the %d elements\n",size1);
+    ptri=(int *)calloc(size1,sizeof(int));
+    for(i=0;i<size1;i++)
+    {
+        scanf("%d",ptri+i);
+    }
+    printf("Enter the how to print the array elements:");
+    scanf("%d",&size2);
+    ptri=(int *)realloc(ptri,(size1+size2)*sizeof(int));
+    printf("Entered the array elements\n");
+    for(i=0;i<size2;i++)
+    {
+        printf("%d\n",*(ptri+i));
+    }
+}
+void callByValueDemo(int a,int b)
+{
+    a++;b++;
+    printf("Sum:%d\n",a+b);
+}
+void callByReferenceDemo(int*a,int*b)
+{
+    *a=*a+2;
+    *b=*b+2;
+    printf("Sum:%d\n",(*a+*b));
+}
+void swaping(int *a,int *b)
+{
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+}
+
+output:
+
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+1
+Enter the value:4
+Entered the value variable:4
+Entered the address of a value:2881467136
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+2
+Enter the value:6
+Entered the value variable:6
+Entered the address of a value:2881457552
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+3
+Enter the no element you want:4
+Enter the 4 elements
+1
+2
+3
+4
+Enter the extra value:2
+Enter the 2 elements
+8
+9
+Entered the array elements
+1
+2
+3
+4
+8
+9
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+4
+Enter the no element you want:4
+Enter the 4 elements
+2
+3
+4
+5
+Enter the how to print the array elements:2
+Entered the array elements
+2
+3
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+5
+Before call by value a:5        b:10
+Sum:17
+After call by value a:5 b:10
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+6
+Before call by reference value a:5      b:10
+Sum:19
+After call by reference value a:7       b:12
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+7
+Before call by reference value a:7      b:12
+After call by reference value a:12      b:7
+Enter the choice:
+1.mallocDemo
+2.callocDemo
+3.ExpandingReAlloc
+4.shrinkingReAllocDemo
+5.callByValueDemo
+6.callByReferenceDemo
+7.swaping
+8.exit
+8
+
+Process returned 1 (0x1)   execution time : 47.107 s
+Press any key to continue.
+
